@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Livro | Littera</title>
+    <link rel="stylesheet" href="css/livro.css">
+</head>
+
+<body>
+
+   <!-- NAV -->
+
+  <header>
+
+    <div class="top-line"></div>
+
+    <div class="navbar-top">
+
+      <a href="./index.html"><img src="./img/logo2.0.png" alt="Logo" class="logo"></a>
+
+      <div class="nav-icons">
+
+
+        <!-- Caixa de pesquisa escondida -->
+  <div class="search-box" id="searchBox">
+    <input type="text" placeholder="Procure por livros…" />
+  </div>
+
+        <div class="lupa-icon" id="searchIcon">
+          <img src="./img/lupa2.0.png" alt="Buscar">
+        </div>
+
+        <img src="./img/carrinho2.0.png" id="carrinho-icon" class="carrinho" onclick="openCart()">
+
+        <!-- LOGIN ICON + NOME DO USUÁRIO -->
+        <div class="user-wrapper" onclick="openPopup()">
+          <img class="user-icon" src="./img/login2.0.png" id="login-icon" alt="Login">
+          <span id="user-name-display"></span>
+        </div>
+
+        <div class="menu-icon" id="menu-btn">&#9776;</div>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- MENU LATERAL -->
+  <div class="overlay" id="overlay"></div>
+  <aside class="sidebar" id="sidebar">
+    <a href="#" class="close-btn" id="close-btn">&times;</a>
+    <a href="#">Início</a>
+    <a href="./sobre.html">Sobre Nós</a>
+    <a href="#">Contato</a>
+  </aside>
+
+
+
+
+    <div class="livro-container">
+
+        <div class="livro-card">
+
+            <!-- LADO ESQUERDO (CAPA) -->
+            <div class="livro-esquerda">
+                <img id="livro-capa" src="" alt="Capa do livro">
+            </div>
+
+            <!-- LADO DIREITO (INFORMAÇÕES) -->
+            <div class="livro-direita">
+
+                <h1 id="livro-titulo"></h1>
+
+                <h2>Informações do livro</h2>
+
+                <p><strong>Autor:</strong> <span id="livro-autor"></span></p>
+                <p><strong>Editora:</strong> <span id="livro-editora"></span></p>
+                <p><strong>Qtd. Páginas:</strong> <span id="livro-paginas"></span></p>
+                <p><strong>ISBN:</strong> <span id="livro-isbn"></span></p>
+                <p><strong>Preço:</strong> R$ <span id="livro-preco"></span></p>
+
+                <div class="estado-box">
+                    <h3>Estado de conservação:</h3>
+                    <p><strong>Condição geral:</strong> bom, conservado.</p>
+                    <p><strong>Capa/Contracapa:</strong> preservada.</p>
+                    <p><strong>Páginas:</strong> conservadas.</p>
+                </div>
+
+                <button class="btn-add">🛒 Adicionar ao carrinho</button>
+                <button class="btn-reservar">⏱️ Reservar por 3 dias</button>
+
+            </div>
+        </div>
+
+        <!-- DESCRIÇÃO -->
+        <div class="descricao-box">
+            <h2>DESCRIÇÃO</h2>
+            <p id="livro-descricao" class="descricao-texto"></p>
+        </div>
+
+        <!-- RECOMENDADOS -->
+        <div class="recomendados">
+            <h2>Recomendados</h2>
+            <div id="livros-similares" class="recomendados-lista"></div>
+        </div>
+
+    </div>
+    <script src="./js/auth.js"></script>
+    <script src="js/script.js"></script>
+
+</body>
+</html>
