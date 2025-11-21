@@ -1,8 +1,9 @@
 import { Sequelize, DataTypes } from "sequelize";
 
 const sequelize = new Sequelize(process.env.DATABASE_URL, {
-  dialect: "sqlite",
-  storage: "data.db",
+  dialect: "postgres",
+  protocol: "postgres",
+  logging: false
 });
 
 // ============ TABELA LIVRO ============
