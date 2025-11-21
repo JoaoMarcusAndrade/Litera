@@ -4,7 +4,7 @@ import bcrypt from "bcryptjs";
 import { fileURLToPath } from 'url';
 import { Usuario } from "./models.js";
 
-const router = express.Router();
+export const router = express.Router();
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
