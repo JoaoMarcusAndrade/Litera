@@ -1,3 +1,4 @@
+import { hash } from "bcryptjs";
 import { Sequelize, DataTypes } from "sequelize";
 
 const sequelize = new Sequelize(process.env.DATABASE_URL, {
@@ -28,7 +29,8 @@ const Usuario = sequelize.define("USUARIO", {
   nome_user: { type: DataTypes.STRING(100), allowNull: false },
   email: { type: DataTypes.STRING(255) },
   telefone: { type: DataTypes.CHAR(11) },
-  permissao: { type: DataTypes.CHAR(1), allowNull: false, defaultValue: "C" }, // C = comum, A = admin
+  permissao: { type: DataTypes.CHAR(1), allowNull: false, defaultValue: "U" }, // U = usuario, A = admin
+  senha: { type: DataTypes.STRING, allowNull: false }
 });
 
 // ============ TABELA ENDERECO ============
