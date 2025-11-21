@@ -1,0 +1,168 @@
+<!-- ...existing code... -->
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Resultados da Busca - Littera</title>
+  <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="./css/busca.css">
+</head>
+<body>
+
+  <!-- NAV -->
+  <header>
+    <div class="top-line"></div>
+    <div class="navbar-top">
+      <a href="./index.html"><img src="./img/logo2.0.png" alt="Logo" class="logo"></a>
+      <span class="navbar-title">LITTERA</span>
+
+      <div class="nav-icons">
+        <div class="search-overlay" id="searchOverlay"></div>
+        <div class="search-box" id="searchBox"><input type="text" placeholder="Procure por livros…" /></div>
+        <div class="lupa-icon" id="searchIcon"><img src="./img/lupa2.0.png" alt="Buscar"></div>
+        <img src="./img/carrinho2.0.png" id="carrinho-icon" class="carrinho" onclick="openCart()">
+        <div class="user-wrapper" onclick="openPopup()">
+          <img class="user-icon" src="./img/login2.0.png" id="login-icon" alt="Login">
+          <span id="user-name-display"></span>
+        </div>
+        <div class="menu-icon" id="menu-btn">&#9776;</div>
+      </div>
+    </div>
+  </header>
+
+  <div class="overlay" id="overlay"></div>
+  <aside class="sidebar" id="sidebar">
+    <a href="#" class="close-btn" id="close-btn">&times;</a>
+    <a href="#">Início</a>
+    <a href="./sobre.html">Sobre Nós</a>
+    <a href="./contato.html">Contato</a>
+  </aside>
+
+  <main class="container-busca">
+    <!-- Conteúdo (resultados) — agora aparece à esquerda -->
+    <section class="conteudo-busca">
+      <div class="header-busca">
+        <h1>Resultados da busca <span id="busca-query"></span></h1>
+        <p id="resultado-count"></p>
+      </div>
+      <div id="resultados" class="lista-resultados"></div>
+    </section>
+
+    <!-- PAINEL DE FILTROS movido para a direita via CSS order -->
+    <aside class="sidebar-filtros" id="painelFiltros">
+      <div class="filtros-header">
+        <h3>Filtros</h3>
+        <button class="reset-filtros" id="btnReset">Limpar</button>
+      </div>
+
+      <div class="filtro-bloco">
+        <h4>Categorias</h4>
+        <div class="categorias-chips" id="chipsCategorias">
+          <div class="chip" data-cat="Romance">Romance</div>
+          <div class="chip" data-cat="Aventura">Aventura</div>
+          <div class="chip" data-cat="Ficção">Ficção</div>
+          <div class="chip" data-cat="Mistério">Mistério</div>
+          <div class="chip" data-cat="Filosofia">Filosofia</div>
+          <div class="chip" data-cat="HQs">HQs</div>
+          <div class="chip" data-cat="Biografia">Biografia</div>
+          <div class="chip" data-cat="Poesia">Poesia</div>
+        </div>
+      </div>
+
+      <div class="filtro-bloco">
+        <h4>Preço máximo</h4>
+        <div class="faixa-preco">
+          <input type="range" id="rangePreco" min="10" max="300" step="5" value="120">
+          <div class="valor" id="valorPreco">R$ 120</div>
+        </div>
+      </div>
+
+      <div class="filtro-bloco">
+        <h4>Ordenar por</h4>
+        <select id="ordenarPor" class="select-styled">
+          <option value="relevancia">Mais relevantes</option>
+          <option value="menor-preco">Menor preço</option>
+          <option value="maior-preco">Maior preço</option>
+          <option value="lancamento">Lançamentos</option>
+        </select>
+      </div>
+
+      <div class="filtros-actions">
+        <button class="btn-primario" id="btnAplicarFiltros">Aplicar filtros</button>
+        <button class="btn-secundario" id="btnVerTudo">Ver tudo</button>
+      </div>
+    </aside>
+  </main>
+
+  <!-- CARRINHO MODAL (mantido) -->
+  <div id="cart-modal" class="cart-modal">...</div>
+
+  <!-- Script: preenche search box e mostra query no topo -->
+  <script>
+    (function() {
+      const params = new URLSearchParams(window.location.search);
+      const q = params.get('query') || '';
+      const sb = document.querySelector('#searchBox input');
+      if (sb) sb.value = q;
+      const qEl = document.getElementById('busca-query');
+      if (qEl && q) qEl.textContent = `"${q}"`;
+      if (qEl && !q) qEl.textContent = '';
+    })();
+  </script>
+
+  <!-- UI filters behaviour (chips, range, aplicar/limpar) -->
+  <script>
+    // chips
+    const chips = document.getElementById('chipsCategorias');
+    const selectedCats = new Set();
+    chips?.addEventListener('click', (ev) => {
+      const chip = ev.target.closest('.chip');
+      if (!chip) return;
+      const cat = chip.dataset.cat;
+      chip.classList.toggle('active');
+      if (chip.classList.contains('active')) selectedCats.add(cat);
+      else selectedCats.delete(cat);
+    });
+
+    // range preco
+    const range = document.getElementById('rangePreco');
+    const valorPreco = document.getElementById('valorPreco');
+    range?.addEventListener('input', () => {
+      valorPreco.textContent = 'R$ ' + Number(range.value).toLocaleString('pt-BR');
+    });
+
+    // aplicar filtros (adiciona params à URL)
+    document.getElementById('btnAplicarFiltros')?.addEventListener('click', () => {
+      const params = new URLSearchParams(window.location.search);
+      const q = params.get('query') || '';
+      if (q) params.set('query', q);
+      if (selectedCats.size) params.set('categoria', Array.from(selectedCats).join(','));
+      else params.delete('categoria');
+      params.set('precoMax', range ? range.value : '');
+      params.set('ordenar', document.getElementById('ordenarPor')?.value || 'relevancia');
+      window.location.search = params.toString();
+    });
+
+    // reset
+    document.getElementById('btnReset')?.addEventListener('click', () => {
+      document.querySelectorAll('.chip.active').forEach(c => c.classList.remove('active'));
+      selectedCats.clear();
+      if (range) { range.value = 120; valorPreco.textContent = 'R$ 120'; }
+      document.getElementById('ordenarPor').value = 'relevancia';
+    });
+
+    // ver tudo
+    document.getElementById('btnVerTudo')?.addEventListener('click', () => {
+      const params = new URLSearchParams(window.location.search);
+      params.delete('categoria'); params.delete('precoMax'); params.delete('ordenar');
+      window.location.search = params.toString();
+    });
+  </script>
+
+  <script src="./js/busca.js"></script>
+  <script src="./js/script.js"></script>
+  <script src="./js/cart-novo.js"></script>
+</body>
+</html>
+<!-- ...existing code... -->

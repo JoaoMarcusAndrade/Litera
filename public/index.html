@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Littera</title>
   <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="./css/cart.css">
   <link rel="icon" type="image/x-icon" href="./img/icones/favicon.ico">
 
 </head>
@@ -21,9 +22,12 @@
     <div class="navbar-top">
 
       <a href="./index.html"><img src="./img/logo2.0.png" alt="Logo" class="logo"></a>
+      <span class="navbar-title">LITTERA</span>
 
       <div class="nav-icons">
 
+        <!-- Overlay da pesquisa -->
+        <div class="search-overlay" id="searchOverlay"></div>
 
         <!-- Caixa de pesquisa escondida -->
   <div class="search-box" id="searchBox">
@@ -32,6 +36,7 @@
 
         <div class="lupa-icon" id="searchIcon">
           <img src="./img/lupa2.0.png" alt="Buscar">
+          
         </div>
 
         <img src="./img/carrinho2.0.png" id="carrinho-icon" class="carrinho" onclick="openCart()">
@@ -54,16 +59,16 @@
     <a href="#" class="close-btn" id="close-btn">&times;</a>
     <a href="#">Início</a>
     <a href="./sobre.html">Sobre Nós</a>
-    <a href="#">Contato</a>
+    <a href="./contato.html">Contato</a>
   </aside>
 
   <nav class="categorias-nav">
     <ul>
-      <li><a href="#">ROMANCE</a></li>
-      <li><a href="#">AVENTURA</a></li>
-      <li><a href="#">FICÇÃO</a></li>
-      <li><a href="#">MISTÉRIO</a></li>
-      <li><a href="#">FILOSOFIA</a></li>
+      <li><a href="#romance-carousel">ROMANCE</a></li>
+      <li><a href="#aventura-carousel">AVENTURA</a></li>
+      <li><a href="#ficcao-carousel">FICÇÃO</a></li>
+      <li><a href="#aventura-carousel">MISTÉRIO</a></li>
+      <li><a href="#filosofia-carousel">FILOSOFIA</a></li>
     </ul>
 
   </nav>
@@ -71,7 +76,7 @@
   <div class="carousel">
     <div class="carousel-track">
       <img src="./img/banners/banner2.png" class="carousel-item">
-      <img src="./IMG/banner3.jpg" class="carousel-item">
+      <img src="./img/banner3.jpg" class="carousel-item">
     </div>
 
     <div class="carousel-indicators">
@@ -96,93 +101,155 @@
 
   <div class="produtos-indicadores"></div>
 
+  <h2 class="titulo-destaques">ROMANCES POPULARES</h2>
 
+  <div id="romance-carousel" class="produtos-carousel romance-carousel">
+    <button class="prod-seta esquerda">&#8249;</button>
 
-  <h2 class="titulo-destaques"> MAIS VENDIDOS</h2>
-
-  <div class="produtos-carousel mv-carousel">
-    <button class="prod-seta esquerda mv-esquerda">&#8249;</button>
-
-    <div class="produtos-track-container mv-container">
-      <div class="produtos-track mv-track"></div>
+    <div class="produtos-track-container">
+      <div class="romance-track"></div>
     </div>
 
-    <button class="prod-seta direita mv-direita">&#8250;</button>
+    <button class="prod-seta direita">&#8250;</button>
   </div>
 
-  <div class="produtos-indicadores mv-indicadores"></div>
+  <h2 class="titulo-destaques">FICÇÃO CIENTÍFICA</h2>
 
+  <div id="ficcao-carousel" class="produtos-carousel ficcao-carousel">
+    <button class="prod-seta esquerda">&#8249;</button>
 
-
-
-  <!-- POPUP LOGIN / CADASTRO (SPA) -->
-<div id="popupOverlay" class="popup-overlay" aria-hidden="true">
-  <div class="popup-box" role="dialog" aria-modal="true" aria-labelledby="popupTitle">
-    <span class="closePopup" id="closePopup">×</span>
-
-    <!-- LOGIN (padrão) -->
-    <div id="login-screen" class="auth-screen">
-      <h2 id="popupTitle">Entrar</h2>
-
-      <input type="email" id="login-email" placeholder="Email" autocomplete="username">
-      <input type="password" id="login-senha" placeholder="Senha" autocomplete="current-password">
-
-      <button id="btnLogin" class="btn-primary">Entrar</button>
-
-      <p class="auth-switch">Não tem conta? <a href="#" id="switchToRegister">Cadastre-se</a></p>
+    <div class="produtos-track-container">
+      <div class="ficcao-track"></div>
     </div>
 
-    <!-- CADASTRO -->
-    <div id="cadastro-screen" class="auth-screen hidden">
-      <h2>Cadastrar</h2>
+    <button class="prod-seta direita">&#8250;</button>
+  </div>
 
-      <input type="text" id="cad-nome" placeholder="Nome completo" autocomplete="name">
-      <input type="email" id="cad-email" placeholder="Email" autocomplete="email">
-      <input type="tel" id="cad-telefone" placeholder="Telefone" autocomplete="tel">
-      <input type="password" id="cad-senha" placeholder="Senha" autocomplete="new-password">
+  <h2 class="titulo-destaques">AVENTURA E MISTÉRIO</h2>
 
-      <button id="btnCadastrar" class="btn-primary">Cadastrar</button>
+  <div id="aventura-carousel" class="produtos-carousel aventura-carousel">
+    <button class="prod-seta esquerda">&#8249;</button>
 
-      <p class="auth-switch">Já tem conta? <a href="#" id="switchToLogin">Entrar</a></p>
+    <div class="produtos-track-container">
+      <div class="aventura-track"></div>
+    </div>
+
+    <button class="prod-seta direita">&#8250;</button>
+  </div>
+
+  <h2 class="titulo-destaques">FILOSOFIA</h2>
+
+  <div id="filosofia-carousel" class="produtos-carousel filosofia-carousel">
+    <button class="prod-seta esquerda">&#8249;</button>
+
+    <div class="produtos-track-container">
+      <div class="filosofia-track"></div>
+    </div>
+
+    <button class="prod-seta direita">&#8250;</button>
+  </div>
+
+  <h2 class="titulo-destaques">HISTÓRIAS EM QUADRINHOS</h2>
+
+  <div id="hqs-carousel" class="produtos-carousel hqs-carousel">
+    <button class="prod-seta esquerda">&#8249;</button>
+
+    <div class="produtos-track-container">
+      <div class="hqs-track"></div>
+    </div>
+
+    <button class="prod-seta direita">&#8250;</button>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-section about">
+        <h2>Littera</h2>
+        <p>O sebo online que dá uma nova vida aos livros usados. Aqui, cada página tem uma nova história.</p>
+      </div>
+
+      <div class="footer-section links">
+        <h2>Links Rápidos</h2>
+        <ul>
+          <li><a href="#">Início</a></li>
+          <li><a href="#">Parcerias</a></li>
+          <li><a href="#">Sobre Nós</a></li>
+          <li><a href="./contato.html">Contato</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-section social">
+        <h2>Redes Sociais</h2>
+        <div class="social-icons">
+          <a href="#"><img src="./img/icones/instagram.png" alt="Instagram"></a>
+          <a href="https://x.com/LitteraSebo"><img src="./img/icones/twitter.png" alt="Twitter"></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      © 2025 Littera Sebo Online – Todos os direitos reservados.
+    </div>
+  </footer>
+
+  <!-- POPUP LOGIN / CADASTRO -->
+  <div id="popupOverlay" class="popup-overlay" aria-hidden="true">
+    <div class="popup-box" role="dialog" aria-modal="true" aria-labelledby="popupTitle">
+      <span class="closePopup" id="closePopup">✕</span>
+
+      <!-- LOGIN (padrão) -->
+      <div id="login-screen" class="auth-screen">
+        <h2 id="popupTitle">Entrar</h2>
+
+        <input type="email" id="login-email" placeholder="Email" autocomplete="username">
+        <input type="password" id="login-senha" placeholder="Senha" autocomplete="current-password">
+
+        <button id="btnLogin" class="btn-primary">Entrar</button>
+
+        <p class="auth-switch">Não tem conta? <a href="#" id="switchToRegister">Cadastre-se</a></p>
+      </div>
+
+      <!-- CADASTRO -->
+      <div id="cadastro-screen" class="auth-screen hidden">
+        <h2>Cadastrar</h2>
+
+        <input type="text" id="cad-nome" placeholder="Nome completo" autocomplete="name">
+        <input type="email" id="cad-email" placeholder="Email" autocomplete="email">
+        <input type="tel" id="cad-telefone" placeholder="Telefone" autocomplete="tel">
+        <input type="password" id="cad-senha" placeholder="Senha" autocomplete="new-password">
+
+        <button id="btnCadastrar" class="btn-primary">Criar conta</button>
+
+        <p class="auth-switch">Já tem conta? <a href="#" id="switchToLogin">Entrar</a></p>
+      </div>
+
     </div>
   </div>
-</div>
 
-
-
-
-<footer class="footer">
-  <div class="footer-content">
-    <div class="footer-section about">
-      <h2>Littera</h2>
-      <p>O sebo online que dá uma nova vida aos livros usados. Aqui, cada página tem uma nova história.</p>
-    </div>
-
-    <div class="footer-section links">
-      <h2>Links Rápidos</h2>
-      <ul>
-        <li><a href="#">Início</a></li>
-        <li><a href="#">Parcerias</a></li>
-        <li><a href="#">Sobre Nós</a></li>
-        <li><a href="#">Contato</a></li>
-      </ul>
-    </div>
-
-    <div class="footer-section social">
-      <h2>Redes Sociais</h2>
-      <div class="social-icons">
-        <a href="#"><img src="./IMG/icones/instagram.png" alt="Instagram"></a>
-        <a href="https://x.com/LitteraSebo"><img src="./IMG/icones/twitter.png" alt="Twitter"></a>
+  <!-- CARRINHO MODAL -->
+  <div id="cart-modal" class="cart-modal">
+    <div class="cart-modal-overlay">
+      <div class="cart-modal-content">
+        <div class="cart-modal-header">
+          <h2>Carrinho de compras</h2>
+          <span class="close-cart" id="close-cart">&times;</span>
+        </div>
+        <div class="cart-modal-body">
+          <div id="cart-items"></div>
+        </div>
+        <div class="cart-modal-footer">
+          <div class="cart-select-all">
+            <input type="checkbox" id="cart-select-all">
+            <label for="cart-select-all">Selecionar tudo</label>
+          </div>
+          <div class="cart-subtotal">
+            <span>Subtotal: <strong id="cart-total">R$ 0,00</strong></span>
+          </div>
+          <button class="btn-checkout">Finalizar Pedido</button>
+        </div>
       </div>
     </div>
   </div>
-
-  <div class="footer-bottom">
-    © 2025 Littera Sebo Online — Todos os direitos reservados.
-  </div>
-</footer>
-
-
 
   <!-- SCRIPTS -->
   <script src="./js/script.js"></script>

@@ -1,0 +1,521 @@
+/* Busca - CSS (aumentado: elementos maiores, painel de filtros ampliado) */
+
+/* Reset / Background */
+html, body {
+  height: auto;
+  margin: 0;
+  padding: 0;
+  overflow-y: auto;
+  font-family: "Poppins", sans-serif;
+  background-image: url(../img/background.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  color: #222;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Variáveis de layout (ajustadas para tamanhos maiores) */
+:root{
+  --site-header-height: 120px;      /* header maior */
+  --results-header-height: 86px;    /* header de resultados maior */
+  --results-header-gap: 10px;
+  --accent: #b02a2a;
+  --accent-dark: #7a0000;
+  --sidebar-width: 340px;           /* AUMENTADO: largura do painel de filtros */
+  --sidebar-padding: 22px;          /* AUMENTADO: padding interno do painel */
+  --chip-padding: 10px 14px;        /* AUMENTADO: chips maiores */
+  --btn-padding: 12px 16px;         /* AUMENTADO: botões maiores */
+  --card-image-height: 260px;       /* AUMENTADO: imagem maior dos cards */
+}
+
+/* Layout principal */
+.container-busca {
+  display: flex;
+  gap: 32px;
+
+  width: 100%;
+  box-sizing: border-box;
+  padding: 44px 44px;
+}
+
+/* Conteúdo (resultados) */
+.conteudo-busca {
+  order: 1;
+  flex: 1;
+  padding: 14px 0;
+  max-width: 1500px;
+  box-sizing: border-box;
+}
+
+/* Header dos resultados — maior */
+.header-busca {
+  position: sticky;
+  top: var(--site-header-height);
+  z-index: 8;
+  height: var(--results-header-height);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 10px 0;
+  margin: 0 0 var(--results-header-gap) 0;
+  background: linear-gradient(transparent, rgba(255,255,255,0.01));
+  backdrop-filter: blur(1px);
+}
+.header-busca h1 {
+  font-size: 40px;      /* maior */
+  margin: 0;
+  color: #2f0000;
+  font-weight: 900;
+  line-height: 1;
+}
+.header-busca #busca-query {
+  color: var(--accent);
+  font-weight: 900;
+  margin-left: 10px;
+  font-size: 30px;      /* maior */
+  display: inline-block;
+}
+
+/* garantir que a grade comece imediatamente abaixo do header-busca */
+.conteudo-busca > .lista-resultados,
+.conteudo-busca > #resultados {
+  margin-top: 0;
+}
+
+/* Sidebar (painel de filtros) - AUMENTADO e estilizado */
+.sidebar-filtros {
+  order: 2;
+  width: var(--sidebar-width);
+  flex-shrink: 0;
+  position: sticky;
+margin-top: 10%;  align-self: flex-start;
+  background: #fff;
+  border-radius: 14px;
+  padding: var(--sidebar-padding);
+  border: 1px solid rgba(0,0,0,0.06);
+  box-shadow: 0 14px 36px rgba(18,18,18,0.07);
+  max-height: calc(100vh - (var(--site-header-height) + var(--results-header-height) + 68px));
+  overflow-y: auto;
+  transition: all .18s ease;
+  z-index: 6;
+}
+
+/* filtros internos */
+.sidebar-filtros .filtros-header {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  margin-bottom:16px;
+}
+.sidebar-filtros .filtros-header h3 {
+  margin:0;
+  font-size:18px;      /* maior */
+  color:#5e0b0b;
+  font-weight:900;
+  letter-spacing:0.3px;
+}
+.sidebar-filtros .reset-filtros {
+  background:transparent;
+  border:none;
+  color:var(--accent);
+  font-weight:800;
+  cursor:pointer;
+  font-size:14px;
+}
+
+/* bloco de filtro (maior espaçamento interno) */
+.sidebar-filtros .filtro-bloco {
+  background: #fff;
+  border-radius: 12px;
+  padding: 14px;
+  margin-bottom: 14px;
+  border: 1px solid rgba(0,0,0,0.045);
+  box-shadow: 0 8px 18px rgba(12,12,12,0.03);
+}
+.sidebar-filtros .filtro-bloco h4 {
+  margin:0 0 10px 0;
+  font-size:14px;      /* maior */
+  color:#333;
+  font-weight:800;
+}
+
+/* chips de categorias (maiores) */
+.categorias-chips { display:flex; flex-wrap:wrap; gap:10px; }
+.categorias-chips .chip {
+  padding: var(--chip-padding);
+  border-radius:999px;
+  background:#fff7f6;
+  color:#7a1a1a;
+  border:1px solid rgba(125,20,20,0.08);
+  font-size:14px;      /* maior */
+  cursor:pointer;
+  user-select:none;
+  transition: transform .12s ease, box-shadow .12s;
+}
+.categorias-chips .chip:hover { transform: translateY(-3px); }
+.categorias-chips .chip.active {
+  background: linear-gradient(90deg,#ffefe6,#fff0f0);
+  box-shadow:0 8px 22px rgba(125,20,20,0.07);
+  border-color: rgba(125,20,20,0.2);
+  color:#4b0000;
+}
+
+/* faixa preço e controles (range maior) */
+.faixa-preco { display:flex; gap:12px; align-items:center; }
+.faixa-preco input[type="range"] {
+  -webkit-appearance: none;
+  width:100%;
+  height:8px;               /* mais grosso */
+  border-radius:8px;
+  background: linear-gradient(90deg,#f3a78e,#e86b4f);
+  outline:none;
+}
+.faixa-preco .valor {
+  min-width:76px;
+  text-align:right;
+  color:var(--accent);
+  font-weight:800;
+  font-size:14px;
+}
+
+/* ordenação maior */
+.select-styled {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid rgba(0,0,0,0.06);
+  background: #fff;
+  font-size: 15px;
+}
+
+/* botões maiores */
+.filtros-actions { display:flex; gap:12px; margin-top:12px; }
+.btn-primario {
+  flex:1;
+  background: linear-gradient(90deg,var(--accent-dark),#b41a1a);
+  color:#fff;
+  border-radius:12px;
+  padding: var(--btn-padding);
+  border:none;
+  cursor:pointer;
+  font-weight:900;
+  font-size:15px;
+  box-shadow: 0 10px 26px rgba(124,0,0,0.14);
+}
+.btn-secundario {
+  flex:1;
+  background:transparent;
+  border:1px solid rgba(0,0,0,0.06);
+  padding: var(--btn-padding);
+  border-radius:12px;
+  cursor:pointer;
+  font-size:15px;
+  color:#444;
+  font-weight:800;
+}
+
+/* scrollbar styling (maior e mais visível) */
+.sidebar-filtros::-webkit-scrollbar { width:10px; }
+.sidebar-filtros::-webkit-scrollbar-thumb { background: rgba(160,30,30,0.28); border-radius:10px; }
+
+/* Grid de resultados (4 colunas desktop) - cards ligeiramente maiores e proporcionais */
+.lista-resultados {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 24px;                 /* espaço maior entre cards */
+  margin-top: 6px;
+  align-items: start;
+}
+
+/* Padroniza cards (.prod-card / .produto-card) — imagem maior */
+.prod-card, .produto-card {
+  background: #fff;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 8px 22px rgba(12,12,12,0.05);
+  transition: transform .18s ease, box-shadow .18s;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  width: 100%;
+  max-width: none;
+  margin: 0;
+}
+.prod-card:hover, .produto-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 22px 48px rgba(12,12,12,0.10);
+  border: 1px solid rgba(231,76,60,0.06);
+}
+
+/* imagem do card — maior */
+.prod-card img, .produto-card img {
+  width: 100%;
+  height: var(--card-image-height);
+  display: block;
+  object-fit: cover;
+}
+
+/* Conteúdo do card (texto maior) */
+.prod-card .titulo, .produto-card .titulo {
+  padding: 12px;
+  font-size: 15px;
+  font-weight: 800;
+  color: #222;
+  line-height: 1.2;
+  min-height: 48px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+.prod-card .preco, .produto-card .preco {
+  padding: 10px 12px 16px;
+  color: var(--accent);
+  font-weight: 900;
+  font-size: 16px;
+}
+
+/* garantia de box-sizing em células */
+.lista-resultados > * { box-sizing: border-box; }
+
+@media (max-width: 1600px) {
+  :root { --sidebar-width: 320px; --card-image-height: 270px; }
+  .container-busca { padding: 40px 30px; gap: 30px; }
+  .lista-resultados { gap: 22px; }
+}
+
+@media (max-width: 1400px) {
+  :root { --sidebar-width: 300px; --card-image-height: 240px; }
+  .container-busca { padding: 35px 25px; gap: 25px; }
+  .lista-resultados { gap: 20px; }
+  .header-busca h1 { font-size: 38px; }
+  .header-busca #busca-query { font-size: 28px; }
+}
+
+@media (max-width: 1200px) {
+  :root { --sidebar-width: 280px; --card-image-height: 220px; }
+  .container-busca { padding: 30px 20px; gap: 20px; }
+  .lista-resultados { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+  .prod-card img { height: 220px; }
+  .header-busca h1 { font-size: 36px; }
+  .header-busca #busca-query { font-size: 26px; }
+  .sidebar-filtros { width: calc(var(--sidebar-width) - 40px); }
+  .sidebar-filtros .filtro-bloco { padding: 12px; margin-bottom: 12px; }
+  .sidebar-filtros .filtro-bloco h4 { font-size: 13px; }
+}
+
+@media (max-width: 1024px) {
+  :root { --sidebar-width: 260px; --card-image-height: 200px; }
+  .container-busca { padding: 25px 15px; gap: 18px; }
+  .lista-resultados { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+  .prod-card img { height: 200px; }
+  .header-busca h1 { font-size: 32px; }
+  .header-busca #busca-query { font-size: 24px; }
+  .sidebar-filtros { width: 240px; padding: 16px; }
+  .categorias-chips .chip { padding: 8px 12px; font-size: 13px; }
+  .sidebar-filtros .filtro-bloco h4 { font-size: 12px; }
+}
+
+@media (max-width: 900px) {
+  .container-busca { 
+    padding: 20px 15px 25px; 
+    flex-direction: column; 
+    gap: 16px; 
+    align-items: center;
+  }
+  .sidebar-filtros { 
+    position: relative; 
+    top: auto; 
+    width: 100%; 
+    max-width: 600px;
+    max-height: none; 
+    margin-bottom: 12px; 
+    order: 1; 
+    padding: 16px; 
+    border-radius: 12px; 
+  }
+  .conteudo-busca { 
+    order: 2; 
+    width: 100%;
+    max-width: 600px;
+    padding: 0;
+  }
+  .header-busca { 
+    top: auto;
+    position: relative;
+    height: auto;
+    margin: 0 0 15px 0;
+    background: transparent;
+  }
+  .lista-resultados { 
+    grid-template-columns: repeat(2, minmax(0, 1fr)); 
+    gap: 14px; 
+    width: 100%;
+  }
+  .prod-card img { height: 180px; }
+  .header-busca h1 { font-size: 28px; margin-bottom: 10px; }
+  .header-busca #busca-query { font-size: 20px; }
+  .sidebar-filtros .filtro-bloco { padding: 10px; margin-bottom: 10px; }
+}
+
+@media (max-width: 768px) {
+  .container-busca { 
+    padding: 15px 12px 20px; 
+    flex-direction: column; 
+    gap: 14px;
+  }
+  :root { --sidebar-width: 100%; --card-image-height: 180px; }
+  .sidebar-filtros { 
+    width: 100%; 
+    max-width: 100%;
+    padding: 14px; 
+    margin-bottom: 10px;
+    border-radius: 10px;
+  }
+  .conteudo-busca { 
+    order: 2;
+    width: 100%;
+    max-width: 100%;
+  }
+  .header-busca { 
+    padding: 10px 0;
+    margin-bottom: 12px;
+  }
+  .header-busca h1 { font-size: 24px; margin-bottom: 8px; }
+  .header-busca #busca-query { font-size: 18px; }
+  .lista-resultados { 
+    grid-template-columns: repeat(2, minmax(0, 1fr)); 
+    gap: 12px;
+    width: 100%;
+    margin: 0;
+  }
+  .prod-card, .produto-card { border-radius: 10px; }
+  .prod-card img, .produto-card img { height: 160px; }
+  .prod-card .titulo, .produto-card .titulo { font-size: 13px; min-height: 40px; }
+  .prod-card .preco, .produto-card .preco { font-size: 14px; }
+  .sidebar-filtros .filtros-header h3 { font-size: 16px; }
+  .sidebar-filtros .filtro-bloco h4 { font-size: 12px; }
+  .categorias-chips .chip { padding: 7px 10px; font-size: 12px; }
+  .select-styled { font-size: 13px; }
+}
+
+@media (max-width: 600px) {
+  .container-busca { 
+    padding: 12px 10px 18px; 
+    flex-direction: column;
+    gap: 12px;
+  }
+  .sidebar-filtros { 
+    width: 100%; 
+    padding: 12px; 
+    margin-bottom: 10px;
+    border-radius: 8px;
+  }
+  .sidebar-filtros .filtros-header h3 { font-size: 14px; }
+  .sidebar-filtros .filtro-bloco { padding: 10px; margin-bottom: 10px; }
+  .sidebar-filtros .filtro-bloco h4 { font-size: 11px; margin-bottom: 8px; }
+  .header-busca h1 { font-size: 20px; margin-bottom: 6px; }
+  .header-busca #busca-query { font-size: 16px; }
+  .lista-resultados { 
+    grid-template-columns: repeat(1, minmax(0, 1fr)); 
+    gap: 10px;
+    margin: 0;
+    width: 100%;
+  }
+  .prod-card img, .produto-card img { height: 140px; object-fit: cover; }
+  .prod-card .titulo, .produto-card .titulo { font-size: 12px; min-height: 36px; padding: 8px; }
+  .prod-card .preco, .produto-card .preco { font-size: 13px; padding: 8px; }
+  .categorias-chips { gap: 8px; }
+  .categorias-chips .chip { padding: 6px 10px; font-size: 11px; }
+  .faixa-preco input[type="range"] { height: 6px; }
+  .faixa-preco .valor { min-width: 60px; font-size: 12px; }
+  .select-styled { font-size: 12px; padding: 8px; }
+  .btn-primario, .btn-secundario { padding: 10px 12px; font-size: 13px; }
+}
+
+@media (max-width: 480px) {
+  .container-busca { 
+    padding: 10px 8px 15px; 
+    flex-direction: column;
+    gap: 10px;
+  }
+  .sidebar-filtros { 
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 8px;
+    border-radius: 8px;
+  }
+  .sidebar-filtros .filtros-header { gap: 8px; margin-bottom: 12px; }
+  .sidebar-filtros .filtros-header h3 { font-size: 13px; }
+  .sidebar-filtros .reset-filtros { font-size: 12px; }
+  .sidebar-filtros .filtro-bloco { padding: 8px; margin-bottom: 8px; }
+  .sidebar-filtros .filtro-bloco h4 { font-size: 11px; margin-bottom: 6px; }
+  .header-busca { padding: 8px 0; margin-bottom: 10px; }
+  .header-busca h1 { font-size: 18px; margin-bottom: 4px; }
+  .header-busca #busca-query { font-size: 14px; }
+  .lista-resultados { 
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    gap: 8px;
+    width: 100%;
+  }
+  .prod-card img, .produto-card img { 
+    height: 120px; 
+    object-fit: cover; 
+  }
+  .prod-card .titulo, .produto-card .titulo { 
+    font-size: 11px; 
+    min-height: 32px; 
+    padding: 6px;
+  }
+  .prod-card .preco, .produto-card .preco { 
+    font-size: 12px; 
+    padding: 6px;
+  }
+  .categorias-chips { gap: 6px; }
+  .categorias-chips .chip { 
+    padding: 5px 8px; 
+    font-size: 10px;
+  }
+  .faixa-preco { gap: 8px; }
+  .faixa-preco input[type="range"] { height: 5px; }
+  .faixa-preco .valor { min-width: 50px; font-size: 11px; }
+  .select-styled { font-size: 11px; padding: 6px; }
+  .btn-primario, .btn-secundario { 
+    padding: 8px 10px; 
+    font-size: 12px;
+  }
+  .sidebar-filtros::-webkit-scrollbar { width: 6px; }
+}
+
+@media (max-width: 360px) {
+  .container-busca { 
+    padding: 8px 6px 12px;
+    gap: 8px;
+  }
+  .sidebar-filtros {
+    padding: 8px;
+    margin-bottom: 6px;
+  }
+  .sidebar-filtros .filtro-bloco { 
+    padding: 6px;
+    margin-bottom: 6px;
+  }
+  .header-busca h1 { font-size: 16px; }
+  .header-busca #busca-query { font-size: 12px; }
+  .lista-resultados { gap: 6px; }
+  .prod-card img { height: 100px; }
+  .prod-card .titulo { font-size: 10px; }
+  .prod-card .preco { font-size: 11px; }
+  .categorias-chips .chip { padding: 4px 6px; font-size: 9px; }
+}
+
+/* small helpers */
+.hidden { display: none !important; }
+.text-muted { color: #777; font-size: 13px; }
+
+/* Fim do arquivo */

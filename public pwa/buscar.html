@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Littera | Buscar Livro</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#570202">
+
+<script>
+  if ("serviceWorker" in navigator) {
+    window.addEventListener("load", () => {
+      navigator.serviceWorker.register("service-worker.js")
+        .then(() => console.log("✅ Service Worker registrado"))
+        .catch(err => console.error("Erro ao registrar SW:", err));
+    });
+  }
+</script>
+
+  <link rel="stylesheet" href="./css/buscar.css" />
+  <script src="https://unpkg.com/html5-qrcode" defer></script>
+  <script src="./js/buscar.js" defer></script>
+</head>
+
+<body>
+   <!-- ===== NAVBAR SUPERIOR ===== -->
+  <header class="navbar-top">
+    <i class="lupa-mobile fa-solid fa-magnifying-glass"></i>
+
+    <img src="./IMG/logo lt.png" alt="Littera" class="logo" />
+
+    <div class="search-box">
+      <form id="original-search" action="results.html" method="get">
+        <input id="search-box" name="q" placeholder="Buscar livros, autor, ISBN..." required />
+      </form>
+    </div>
+
+    <div class="nav-icons">
+      <div class="menu-icon" id="menu-btn">
+        <i class="fa-solid fa-bars"></i>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== MENU LATERAL ===== -->
+  <div class="overlay" id="overlay"></div>
+
+  <aside class="sidebar" id="sidebar">
+    <a href="#" class="close-btn" id="close-btn">&times;</a>
+     <a href="index.html">Início</a>
+    <a href="gerenciar.html">Registros</a>
+    <a href="#">Contato</a>
+  </aside>
+
+  <main>
+    <div class="scanner-container">
+      <div id="reader" style="width: 300px; height: 300px;"></div>
+      <p>Escaneie o código de barras ou QR do livro</p>
+      <button id="stop-scan">Parar Scanner</button>
+    </div>
+
+    <div id="resultado" class="resultado">
+      <h2>Resultado</h2>
+      <p id="info">Aguardando leitura...</p>
+    </div>
+  </main>
+
+  <script src="./js/script.js"></script>
+
+
+  <!-- Modal de Confirmação de Retirada (estilo cadastrar) -->
+  <div id="modalRetirada" class="modal">
+    <div class="modal-content">
+      <span id="fecharModalRetirada" class="close-btn-modal">&times;</span>
+
+      <div class="cadastro-container">
+        <h2>Confirmação de Retirada</h2>
+
+        <div id="retirada-card">
+          <!-- preenchido via JS -->
+        </div>
+
+        <div style="margin-top:12px;">
+          <button id="confirmarRetirada" class="btn-cadastrar">Confirmar Retirada</button>
+          <button id="cancelarRetirada" class="btn-cadastrar" style="margin-left:8px;">Cancelar</button>
+        </div>
+        <p id="retirada-status" style="margin-top:8px;"></p>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

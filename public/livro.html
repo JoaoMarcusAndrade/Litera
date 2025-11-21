@@ -4,7 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Livro | Littera</title>
-    <link rel="stylesheet" href="css/livro.css">
+    <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/livro.css">
+    <link rel="stylesheet" href="css/cart.css">
+      <link rel="icon" type="image/x-icon" href="./img/icones/favicon.ico">
+
 </head>
 
 <body>
@@ -18,11 +22,13 @@
     <div class="navbar-top">
 
       <a href="./index.html"><img src="./img/logo2.0.png" alt="Logo" class="logo"></a>
+      <span class="navbar-title">LITTERA</span>
 
       <div class="nav-icons">
 
 
         <!-- Caixa de pesquisa escondida -->
+  <div class="search-overlay" id="searchOverlay"></div>
   <div class="search-box" id="searchBox">
     <input type="text" placeholder="Procure por livros…" />
   </div>
@@ -31,7 +37,10 @@
           <img src="./img/lupa2.0.png" alt="Buscar">
         </div>
 
-        <img src="./img/carrinho2.0.png" id="carrinho-icon" class="carrinho" onclick="openCart()">
+        <div class="cart-container">
+          <img src="./img/carrinho2.0.png" id="carrinho-icon" class="carrinho" onclick="openCart()">
+          <span id="cart-count">0</span>
+        </div>
 
         <!-- LOGIN ICON + NOME DO USUÁRIO -->
         <div class="user-wrapper" onclick="openPopup()">
@@ -51,7 +60,7 @@
     <a href="#" class="close-btn" id="close-btn">&times;</a>
     <a href="#">Início</a>
     <a href="./sobre.html">Sobre Nós</a>
-    <a href="#">Contato</a>
+    <a href="./contato.html">Contato</a>
   </aside>
 
 
@@ -71,23 +80,45 @@
 
                 <h1 id="livro-titulo"></h1>
 
-                <h2>Informações do livro</h2>
+                <div class="preco-destaque">R$ <span id="livro-preco"></span></div>
 
-                <p><strong>Autor:</strong> <span id="livro-autor"></span></p>
-                <p><strong>Editora:</strong> <span id="livro-editora"></span></p>
-                <p><strong>Qtd. Páginas:</strong> <span id="livro-paginas"></span></p>
-                <p><strong>ISBN:</strong> <span id="livro-isbn"></span></p>
-                <p><strong>Preço:</strong> R$ <span id="livro-preco"></span></p>
+                <div class="info-layout">
+                    <div class="info-esquerda">
+                        <div class="info-item">
+                            <strong>Autor:</strong> <span id="livro-autor"></span>
+                        </div>
+                        <div class="info-item">
+                            <strong>Editora:</strong> <span id="livro-editora"></span>
+                        </div>
+                        <div class="info-item">
+                            <strong>Qtd. Páginas:</strong> <span id="livro-paginas"></span> págs.
+                        </div>
+                        <div class="info-item">
+                            <strong>ISBN:</strong> <span id="livro-isbn"></span>
+                        </div>
+                    </div>
 
-                <div class="estado-box">
-                    <h3>Estado de conservação:</h3>
-                    <p><strong>Condição geral:</strong> bom, conservado.</p>
-                    <p><strong>Capa/Contracapa:</strong> preservada.</p>
-                    <p><strong>Páginas:</strong> conservadas.</p>
+                    <div class="estado-box">
+                        <h3>Estado de conservação:</h3>
+                        <p><strong>Condição geral:</strong> bom, conservado.</p>
+                        <p><strong>Capa/Contracapa:</strong> preservada.</p>
+                        <p><strong>Páginas:</strong> conservadas.</p>
+                    </div>
                 </div>
 
-                <button class="btn-add">🛒 Adicionar ao carrinho</button>
-                <button class="btn-reservar">⏱️ Reservar por 3 dias</button>
+                <div class="estoque-section">
+                    <span>Em estoque: <strong id="livro-estoque">3</strong></span>
+                    <div class="quantidade-control">
+                        <button class="qty-btn">−</button>
+                        <input type="number" class="qty-input" value="1" min="1">
+                        <button class="qty-btn">+</button>
+                    </div>
+                </div>
+
+                <div class="botoes-section">
+                    <button class="btn-add">🛒 Adicionar ao carrinho</button>
+                    <button class="btn-reservar">📅 Reservar livro (3 dias)</button>
+                </div>
 
             </div>
         </div>
@@ -103,6 +134,98 @@
             <h2>Recomendados</h2>
             <div id="livros-similares" class="recomendados-lista"></div>
         </div>
+
+        <!-- POPUP LOGIN / CADASTRO (SPA) -->
+<div id="popupOverlay" class="popup-overlay" aria-hidden="true">
+  <div class="popup-box" role="dialog" aria-modal="true" aria-labelledby="popupTitle">
+    <span class="closePopup" id="closePopup">✕</span>
+
+    <!-- LOGIN (padrão) -->
+    <div id="login-screen" class="auth-screen">
+      <h2 id="popupTitle">Entrar</h2>
+
+      <input type="email" id="login-email" placeholder="Email" autocomplete="username">
+      <input type="password" id="login-senha" placeholder="Senha" autocomplete="current-password">
+
+      <button id="btnLogin" class="btn-primary">Entrar</button>
+
+      <p class="auth-switch">Não tem conta? <a href="#" id="switchToRegister">Cadastre-se</a></p>
+    </div>
+
+    <!-- CADASTRO -->
+    <div id="cadastro-screen" class="auth-screen hidden">
+      <h2>Cadastrar</h2>
+
+      <input type="text" id="cad-nome" placeholder="Nome completo" autocomplete="name">
+      <input type="email" id="cad-email" placeholder="Email" autocomplete="email">
+      <input type="tel" id="cad-telefone" placeholder="Telefone" autocomplete="tel">
+      <input type="password" id="cad-senha" placeholder="Senha" autocomplete="new-password">
+
+      <button id="btnCadastrar" class="btn-primary">Criar conta</button>
+
+      <p class="auth-switch">Já tem conta? <a href="#" id="switchToLogin">Entrar</a></p>
+    </div>
+
+  
+    </div>
+  </div>
+</div>
+
+<!-- CARRINHO MODAL -->
+<div id="cart-modal" class="cart-modal">
+  <div class="cart-modal-overlay">
+    <div class="cart-modal-content">
+      <div class="cart-modal-header">
+        <h2>Carrinho de compras</h2>
+        <span class="close-cart" id="close-cart">&times;</span>
+      </div>
+      <div class="cart-modal-body">
+        <div id="cart-items"></div>
+      </div>
+      <div class="cart-modal-footer">
+        <div class="cart-select-all">
+          <input type="checkbox" id="cart-select-all">
+          <label for="cart-select-all">Selecionar tudo</label>
+        </div>
+        <div class="cart-subtotal">
+          <span>Subtotal: <strong id="cart-total">R$ 0,00</strong></span>
+        </div>
+        <button class="btn-checkout">Finalizar Pedido</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="footer-content">
+    <div class="footer-section about">
+      <h2>Littera</h2>
+      <p>O sebo online que dá uma nova vida aos livros usados. Aqui, cada página tem uma nova história.</p>
+    </div>
+
+    <div class="footer-section links">
+      <h2>Links Rápidos</h2>
+      <ul>
+        <li><a href="#">Início</a></li>
+        <li><a href="#">Parcerias</a></li>
+        <li><a href="#">Sobre Nós</a></li>
+        <li><a href="./contato.html">Contato</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-section social">
+      <h2>Redes Sociais</h2>
+      <div class="social-icons">
+        <a href="#"><img src="./img/icones/instagram.png" alt="Instagram"></a>
+        <a href="https://x.com/LitteraSebo"><img src="./img/icones/twitter.png" alt="Twitter"></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    © 2025 Littera Sebo Online – Todos os direitos reservados.
+  </div>
+</footer>
 
     </div>
     <script src="./js/auth.js"></script>

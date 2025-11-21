@@ -1,0 +1,533 @@
+/* ===== ESTILO GERAL ===== */
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* ===== NAVBAR ===== */
+.navbar-top {
+  background-color: #570202;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 25px;
+  height: 70px;
+  position: relative;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.logo {
+  height: 55px;
+  width: auto;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.logo:hover {
+  transform: scale(1.03);
+}
+
+.logo-text {
+  color: #fff;
+  font-size: 26px;
+  letter-spacing: 4px;
+  margin: 0;
+}
+
+/* ===== ICONES ===== */
+.lupa-mobile {
+  display: none;
+  width: 28px;
+  height: 28px;
+  cursor: pointer;
+  filter: brightness(0) invert(1);
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.menu-icon {
+  font-size: 32px;
+  cursor: pointer;
+  color: white;
+  transition: transform 0.2s;
+}
+
+.menu-icon:hover {
+  transform: scale(1.15);
+}
+
+/* ===== SIDEBAR ===== */
+.sidebar {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  top: 0;
+  right: 0;
+  background-color: #3b0000;
+  overflow-x: hidden;
+  transition: 0.3s;
+  padding-top: 60px;
+  z-index: 1001;
+}
+
+.sidebar a {
+  display: block;
+  padding: 12px 25px;
+  color: #f1f1f1;
+  text-decoration: none;
+  font-size: 18px;
+  transition: 0.3s;
+}
+
+.sidebar a:hover {
+  background-color: #700000;
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  left: 25px;
+  font-size: 30px;
+  color: white;
+  text-decoration: none;
+}
+
+/* ===== OVERLAY ===== */
+.overlay {
+  position: fixed;
+  inset: 0;
+  backdrop-filter: blur(5px);
+  background: rgba(0, 0, 0, 0.4);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease;
+  z-index: 1000;
+}
+
+.overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* ===== HOME / MENU ===== */
+.home-container {
+  flex: 1;
+  display: flex;
+  margin-top: 0;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 600px;
+  padding: 40px 0;
+}
+
+.menu-botoes {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  margin-top: 40px;
+}
+
+.home-btn {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 15px;
+  width: 260px;
+  padding: 14px 22px;
+  border: 2px solid #600000;
+  border-radius: 12px;
+  background-color: white;
+  color: #600000;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 18px;
+  transition: all 0.2s ease;
+}
+
+.home-btn img {
+  width: 30px;
+  height: 30px;
+}
+
+.home-btn:hover {
+  background-color: #600000;
+  color: #fff;
+  transform: scale(1.03);
+}
+
+.home-btn:hover img {
+  filter: brightness(0) invert(1);
+}
+
+/* ===== MODAL (POPUP DE CADASTRO) ===== */
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+  padding: 20px;
+  backdrop-filter: blur(3px);
+}
+
+.modal.active {
+  display: flex;
+}
+
+.modal-content {
+  background-color: #fff;
+  border-radius: 16px;
+  width: 90%;
+  max-width: 520px;
+  max-height: 80vh;
+  padding: 25px 20px;
+  position: relative;
+  overflow-y: auto;
+  animation: fadeIn 0.3s ease;
+  box-shadow: 0 4px 15px rgba(87, 2, 2, 0.3);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.close-btn-modal {
+  position: absolute;
+  top: 10px;
+  right: 18px;
+  font-size: 28px;
+  color: #570202;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.close-btn-modal:hover {
+  transform: scale(1.2);
+}
+
+/* ===== CADASTRO LIVRO ===== */
+.cadastro-container {
+  max-width: 500px;
+  margin: 30px auto;
+  background-color: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 10px rgba(87, 2, 2, 0.2);
+  padding: 25px;
+  text-align: center;
+}
+
+.cadastro-container h2 {
+  color: #570202;
+  margin-bottom: 25px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+/* Upload de imagem */
+.imagem-upload {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 25px;
+  cursor: pointer;
+}
+
+.imagem-upload label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 2px dashed #570202;
+  border-radius: 12px;
+  padding: 15px;
+  width: 180px;
+  height: 180px;
+  justify-content: center;
+  transition: 0.3s;
+}
+
+.imagem-upload label:hover {
+  background-color: #fff6f6;
+}
+
+.imagem-upload img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  margin-bottom: 10px;
+  border-radius: 8px;
+}
+
+.imagem-upload span {
+  color: #570202;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+/* Inputs e Textareas */
+.input-group {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  margin-bottom: 18px;
+}
+
+.input-group label {
+  font-weight: 600;
+  color: #570202;
+  margin-bottom: 5px;
+}
+
+.input-group input,
+.input-group textarea {
+  border: 2px solid #570202;
+  border-radius: 10px;
+  padding: 10px;
+  font-size: 15px;
+  outline: none;
+  transition: 0.3s;
+}
+
+.input-group input:focus,
+.input-group textarea:focus {
+  border-color: #7a0e0e;
+  box-shadow: 0 0 0 2px rgba(87, 2, 2, 0.15);
+}
+
+/* ===== CONDIÇÃO DO LIVRO ===== */
+.condicao-titulo {
+  color: #570202;
+  text-align: left;
+  margin: 30px 0 15px;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+#condicao-geral,
+#condicao-capa,
+#condicao-paginas {
+  resize: vertical;
+  min-height: 70px;
+}
+
+/* ===== BOTÃO CADASTRAR ===== */
+.btn-cadastrar {
+  background-color: #570202;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 12px 20px;
+  font-size: 16px;
+  font-weight: 600;
+  width: 100%;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn-cadastrar:hover {
+  background-color: #7a0e0e;
+  transform: scale(1.02);
+}
+
+
+.lista-livros {
+  display: grid;
+  gap: 1rem;
+  padding: 1.5rem;
+}
+
+.card-livro {
+  display: flex;
+  align-items: flex-start;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  overflow: hidden;
+  padding: 1rem;
+}
+
+.capa-livro {
+  width: 100px;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-right: 1rem;
+}
+
+.info-livro {
+  flex: 1;
+}
+
+.acoes {
+  margin-top: .5rem;
+  display: flex;
+  gap: .5rem;
+}
+
+.btn-editar, .btn-excluir {
+  border: none;
+  padding: .4rem .7rem;
+  border-radius: 6px;
+  cursor: pointer;
+  color: #fff;
+}
+
+.btn-editar { background-color: #007bff; }
+.btn-excluir { background-color: #dc3545; }
+.btn-editar:hover { opacity: 0.85; }
+.btn-excluir:hover { opacity: 0.85; }
+
+.modal {
+   display: none;
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+  padding: 20px;
+  backdrop-filter: blur(3px);
+}
+.modal.active { display: flex; }
+
+.modal-content {
+  background-color: #fff;
+  border-radius: 16px;
+  width: 90%;
+  max-width: 520px;
+  max-height: 80vh;
+  padding: 25px 20px;
+  position: relative;
+  overflow-y: auto;
+  animation: fadeIn 0.3s ease;
+  box-shadow: 0 4px 15px rgba(87, 2, 2, 0.3);
+}
+
+.modal-content input,
+.modal-content textarea {
+  width: 100%;
+  margin-bottom: .7rem;
+  padding: .5rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.btn-salvar {
+  background: #7a0e0e;
+  color: #fff;
+  border: none;
+  padding: .6rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+
+
+
+
+/* ===== RESPONSIVIDADE ===== */
+@media (max-width: 768px) {
+  .search-box { display: none; }
+  .lupa-mobile { display: block; }
+
+  .logo {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    height: 45px;
+  }
+
+  .menu-icon {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 30px;
+  }
+
+  .navbar-top {
+    height: 65px;
+    padding: 8px 20px;
+  }
+
+
+  .home-btn {
+    width: 230px;
+    height: 70px;
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo { height: 80px; }
+  .menu-icon { font-size: 26px; }
+  .navbar-top { height: 60px; }
+
+  .cadastro-container {
+    margin: 15px;
+    padding: 20px;
+  }
+
+  .imagem-upload label {
+    width: 140px;
+    height: 140px;
+  }
+
+  .input-group input,
+  .input-group textarea {
+    font-size: 14px;
+  }
+
+  .modal-content {
+    width: 95%;
+    padding: 20px;
+  }
+}
+
+/* ===== NAVBAR RESPONSIVA ===== */
+@media (max-width: 768px) {
+  .navbar-top {
+    height: 65px;
+    padding: 0 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+  }
+
+  .lupa-mobile {
+    display: block;
+    font-size: 22px;
+    color: white;
+    cursor: pointer;
+  }
+
+  .logo {
+    height: 80px;
+    margin: 0 auto;
+    position: static; /* remove absolute */
+    transform: none; /* remove translate */
+  }
+
+  .menu-icon {
+    font-size: 28px;
+    color: white;
+    cursor: pointer;
+  }
+
+  .search-box {
+    display: none; /* esconde busca no mobile */
+  }
+}
+

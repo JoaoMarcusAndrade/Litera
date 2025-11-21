@@ -1,0 +1,232 @@
+/* layout do about mantendo variáveis do style.css */
+body {
+  font-family: 'Arial', sans-serif;
+  background: url('../img/background.png') no-repeat center center fixed;
+  background-size: cover;
+  color: #150C0C;
+  line-height: 1.6;
+}
+.container{max-width:1200px;margin:0 auto;padding:40px 20px}
+
+/* Animações */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.about-values, .testimonials, .team {
+  animation: fadeInUp 0.8s ease-out;
+  background: rgba(242, 242, 242, 0.9);
+  border-radius: 15px;
+  padding: 20px;
+  margin-bottom: 40px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+/* HERO */
+.about-hero{background: linear-gradient(135deg, #851616 0%, #570202 100%);color:#fff;padding:60px 20px;margin-bottom:40px}
+.hero-container{max-width:1200px;margin:0 auto;display:flex;gap:60px;align-items:center;justify-content:space-between}
+.hero-text{max-width:560px}
+.kicker{color:#EACEAA;font-weight:700;font-size:18px;text-transform:uppercase;letter-spacing:1px}
+.about-hero h1{font-size:48px;margin:8px 0 12px;color:#fff;font-weight:800;text-shadow:0 2px 4px rgba(0,0,0,0.5)}
+.lead{color:#f2f2f2;line-height:1.8;font-size:18px}
+
+/* imagens hero (sobreposição circular) */
+.hero-images{display:flex;justify-content:center;align-items:center;margin-top:40px;position:relative}
+.hero-images img{width:220px;height:220px;object-fit:cover;border-radius:12px;box-shadow:0 10px 30px rgba(16,24,40,.07);transform:translateY(0);transition:transform 0.3s ease, box-shadow 0.3s ease}
+.hero-images img:hover{transform:translateY(-10px) scale(1.05);box-shadow:0 20px 40px rgba(16,24,40,.15)}
+.hero-images img.hero-large{width:360px;height:360px;border-radius:50%;}
+
+/* valores */
+.about-values{padding:30px 0}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.grid-3 article{background:#e7e7e7;text-align:center;padding:30px;border-radius:10px;transition:transform 0.3s ease}
+.grid-3 article:hover{transform:translateY(-5px)}
+.grid-3 h3{margin:15px 0 10px;color:#8a0000}
+.grid-3 p{color:#570202}
+.grid-3 .icon{width:64px;height:64px;margin-bottom:12px;filter:drop-shadow(0 2px 4px rgba(0,0,0,0.1))}
+
+/* testimonials */
+.testimonials{padding:40px 0}
+.testimonials h2{text-align:center;margin-bottom:10px;color:#150C0C;font-weight:700;font-size:32px}
+.testimonials-subtitle{text-align:center;margin-bottom:30px;color:#85431E;font-size:18px;font-style:italic}
+.testimonials-carousel{margin:0 auto;text-align:center}
+.testimonials-track-container{overflow:hidden;margin:0 auto;width:1000px}
+.testimonials-track{display:flex;gap:20px;transition:transform 0.3s ease}
+.testimonial-item{width:400px;height:auto;border-radius:10px;box-shadow:0 4px 20px rgba(0,0,0,0.1);flex-shrink:0}
+.testimonials-indicadores{display:flex;justify-content:center;gap:10px;margin-top:20px}
+.testimonials-indicadores .dot{width:10px;height:10px;border-radius:50%;background:#EACEAA;cursor:pointer;transition:background 0.3s}
+.testimonials-indicadores .dot.active{background:#D39858}
+
+/* team */
+.team-media{display:flex;gap:32px;align-items:center;padding:36px 0}
+.team-photo img{width:420px;height:420px;object-fit:cover;border-radius:50%;box-shadow:0 20px 60px rgba(16,24,40,0.08);transition:transform 0.3s ease;border:5px solid #EACEAA}
+.team-photo img:hover{transform:scale(1.05) rotate(2deg)}
+.team-copy{max-width:520px}
+.team-copy h3{color:#150C0C;font-size:28px;margin-bottom:15px}
+.team-copy p{color:#570202;font-size:16px}
+
+/* team */
+.team-media2 {
+  display: flex;
+  flex-direction: row-reverse; /* INVERTE LADOS */
+  gap: 32px;
+  align-items: center;
+  padding: 36px 0;
+}
+
+/* Foto à esquerda */
+.team-media2 .team-photo img {
+  width: 420px;
+  height: 420px;
+  object-fit: cover;
+  border-radius: 50%;
+  box-shadow: 0 20px 60px rgba(16,24,40,0.08);
+  transition: transform 0.3s ease;
+  border: 5px solid #EACEAA;
+}
+
+.team-media2 .team-photo img:hover {
+  transform: scale(1.05) rotate(-2deg); /* leve giro contrário pra combinar */
+}
+
+.team-media2 .team-copy {
+  max-width: 520px;
+}
+
+.team-media2 .team-copy h3 {
+  color: #150C0C;
+  font-size: 28px;
+  margin-bottom: 15px;
+}
+
+.team-media2 .team-copy p {
+  color: #570202;
+  font-size: 16px;
+}
+
+
+@media (max-width:1200px){
+  .container{max-width:1000px;padding:30px 15px}
+  .about-hero{padding:50px 20px}
+  .hero-container{gap:40px}
+  .about-hero h1{font-size:42px}
+  .grid-3{grid-template-columns:repeat(2,1fr);gap:20px}
+  .testimonials-track-container{width:700px}
+  .testimonial-item{width:320px}
+}
+
+@media (max-width:1000px){
+  .container{max-width:100%;padding:25px 15px}
+  .hero-container{flex-direction:column;text-align:center;gap:40px}
+  .hero-text{max-width:100%}
+  .grid-3{grid-template-columns:repeat(2,1fr);gap:15px}
+  .grid-3 article{padding:20px}
+  .testimonials-track-container{width:100%;max-width:600px;margin:0 auto}
+  .testimonial-item{width:100%;max-width:300px}
+  .team-media{flex-direction:column-reverse}
+  .about-hero h1{font-size:36px}
+  .about-hero{padding:40px 20px}
+  .lead{font-size:16px}
+  .hero-images img:not(.hero-large){width:180px;height:180px}
+  .hero-images img.hero-large{width:280px;height:280px}
+}
+
+@media (max-width:768px){
+  .container{padding:20px 12px}
+  .about-hero{padding:35px 15px}
+  .hero-text{max-width:100%}
+  .about-hero h1{font-size:32px;margin-bottom:15px}
+  .kicker{font-size:15px}
+  .lead{font-size:14px;line-height:1.6}
+  .hero-images{margin-top:25px}
+  .hero-images img:not(.hero-large){width:140px;height:140px}
+  .hero-images img.hero-large{width:200px;height:200px}
+  .grid-3{grid-template-columns:repeat(2,1fr);gap:12px}
+  .grid-3 article{padding:15px;text-align:center}
+  .grid-3 h3{margin:10px 0 8px;font-size:16px}
+  .grid-3 p{font-size:13px}
+  .grid-3 .icon{width:50px;height:50px}
+  .about-values{padding:20px 0}
+  .testimonials{padding:30px 0}
+  .testimonials h2{font-size:26px;margin-bottom:10px}
+  .testimonials-subtitle{font-size:15px;margin-bottom:20px}
+  .testimonials-track-container{width:100%;max-width:400px}
+  .testimonial-item{width:100%;max-width:280px}
+  .team-media{gap:20px;padding:20px 0}
+  .team-photo img{width:300px;height:300px;border:4px solid #EACEAA}
+  .team-copy h3{font-size:24px;margin-bottom:12px}
+  .team-copy p{font-size:14px}
+  .team-copy{max-width:100%}
+}
+
+@media (max-width:600px){
+  .container{padding:15px 10px}
+  .about-hero{padding:30px 12px}
+  .about-hero h1{font-size:28px}
+  .kicker{font-size:13px}
+  .lead{font-size:13px}
+  .hero-images{margin-top:20px;flex-direction:column;align-items:center}
+  .hero-images img{width:120px;height:120px}
+  .hero-images img.hero-large{width:160px;height:160px}
+  .grid-3{grid-template-columns:1fr;gap:10px}
+  .grid-3 article{padding:12px}
+  .grid-3 h3{margin:8px 0 6px;font-size:14px}
+  .grid-3 p{font-size:12px}
+  .grid-3 .icon{width:45px;height:45px}
+  .about-values{padding:15px 0;margin-bottom:25px}
+  .testimonials{padding:20px 0;margin-bottom:25px}
+  .testimonials h2{font-size:22px;margin-bottom:8px}
+  .testimonials-subtitle{font-size:13px;margin-bottom:15px}
+  .testimonials-track-container{width:100%;max-width:350px}
+  .testimonial-item{width:100%;max-width:250px}
+  .testimonials-carousel{margin:0 auto}
+  .team{margin-bottom:25px}
+  .team-media{gap:15px;padding:15px 0}
+  .team-photo img{width:250px;height:250px}
+  .team-copy h3{font-size:20px;margin-bottom:10px}
+  .team-copy p{font-size:13px}
+}
+
+@media (max-width:480px){
+  .container{padding:12px 8px}
+  .about-hero{padding:25px 10px}
+  .hero-container{gap:20px}
+  .about-hero h1{font-size:24px}
+  .kicker{font-size:12px}
+  .lead{font-size:12px}
+  .hero-images{margin-top:15px}
+  .hero-images img{width:100px;height:100px}
+  .hero-images img.hero-large{width:140px;height:140px}
+  .grid-3{gap:8px}
+  .grid-3 article{padding:10px}
+  .grid-3 h3{font-size:13px;margin:6px 0}
+  .grid-3 p{font-size:11px}
+  .grid-3 .icon{width:40px;height:40px}
+  .about-values{padding:12px 0;margin-bottom:20px}
+  .testimonials{padding:15px 0;margin-bottom:20px}
+  .testimonials h2{font-size:20px}
+  .testimonials-subtitle{font-size:12px}
+  .testimonials-track-container{width:100%;max-width:320px}
+  .testimonial-item{width:100%;max-width:220px}
+  .team-photo img{width:200px;height:200px}
+  .team-copy h3{font-size:18px;margin-bottom:8px}
+  .team-copy p{font-size:12px;line-height:1.4}
+}
+
+@media (max-width:360px){
+  .about-hero{padding:20px 8px}
+  .about-hero h1{font-size:20px}
+  .hero-images img{width:90px;height:90px}
+  .hero-images img.hero-large{width:120px;height:120px}
+  .grid-3 h3{font-size:12px}
+  .grid-3 p{font-size:10px}
+  .testimonials h2{font-size:18px}
+  .team-photo img{width:180px;height:180px}
+}

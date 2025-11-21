@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Sobre — Littera</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/sobre.css">
+</head>
+
+<body>
+    <!-- NAV -->
+    <header>
+        <div class="top-line"></div>
+        <div class="navbar-top">
+            <a href="./index.html"><img src="./img/logo2.0.png" alt="Logo" class="logo"></a>
+            <span class="navbar-title">LITTERA</span>
+            <div class="nav-icons">
+                <!-- Caixa de pesquisa escondida -->
+                <div class="search-overlay" id="searchOverlay"></div>
+                <div class="search-box" id="searchBox">
+                    <input type="text" placeholder="Procure por livros…" />
+                </div>
+                <div class="lupa-icon" id="searchIcon">
+                    <img src="./img/lupa2.0.png" alt="Buscar">
+                </div>
+                <img src="./img/carrinho2.0.png" id="carrinho-icon" class="carrinho" onclick="openCart()">
+                <!-- LOGIN ICON + NOME DO USUÁRIO -->
+                <div class="user-wrapper" onclick="openPopup()">
+                    <img class="user-icon" src="./img/login2.0.png" id="login-icon" alt="Login">
+                    <span id="user-name-display"></span>
+                </div>
+                <div class="menu-icon" id="menu-btn">&#9776;</div>
+            </div>
+        </div>
+    </header>
+
+    <!-- MENU LATERAL -->
+    <div class="overlay" id="overlay"></div>
+    <aside class="sidebar" id="sidebar">
+        <a href="#" class="close-btn" id="close-btn">&times;</a>
+        <a href="./index.html">Início</a>
+        <a href="./sobre.html">Sobre Nós</a>
+        <a href="./contato.html">Contato</a>
+    </aside>
+
+
+
+    <main class="about-page">
+        <!-- HERO + imagens principais (sobre) -->
+        <section class="about-hero">
+            <div class="hero-container">
+                <div class="hero-text">
+                    <small class="kicker">Sobre o Littera</small>
+                    <h1>Sebo Clássico, Focado em Vendas e Estoque</h1>
+                    <p class="lead">O Littera é um sebo tradicional dedicado à venda de livros usados de qualidade. Nosso foco está na gestão eficiente do estoque e na oferta de uma ampla variedade de títulos para amantes da leitura.</p>
+                </div>
+
+                <div class="hero-images">
+                    <img src="./img/littera.png" alt="Equipe" class="hero-large">
+                </div>
+            </div>
+        </section>
+
+        <!-- VALORES / MISSÃO -->
+        <section class="about-values container">
+            <div class="grid-3">
+                <article>
+                    <img src="./img/icones/proposito.png" alt="" class="icon">
+                    <h3>Propósito</h3>
+                    <p>Preservar e promover a cultura através da venda de livros usados.</p>
+                </article>
+                <article>
+                    <img src="./img/icones/missao.png" alt="" class="icon">
+                    <h3>Missão</h3>
+                    <p>Fornecer livros de qualidade com estoque organizado e preços acessíveis.</p>
+                </article>
+                <article>
+                    <img src="./img/icones/valores.png" alt="" class="icon">
+                    <h3>Valores</h3>
+                    <p>Paixão por livros, sustentabilidade e atendimento ao cliente.</p>
+                </article>
+            </div>
+        </section>
+
+        <!-- TESTIMONIAIS -->
+        <section class="testimonials container">
+            <h2>Sabe o por que escolher o Littera</h2>
+            <p class="testimonials-subtitle">Veja o que dizem nossos clientes e entenda por que somos a escolha certa
+            </p>
+            <div class="testimonials-carousel">
+                <div class="testimonials-track-container">
+                    <div class="testimonials-track">
+                        <img src="./img/avaliacoes/49.png" class="testimonial-item" alt="Avaliação 1">
+                        <img src="./img/avaliacoes/50.png" class="testimonial-item" alt="Avaliação 2">
+                        <img src="./img/avaliacoes/51.png" class="testimonial-item" alt="Avaliação 3">
+                        <img src="./img/avaliacoes/52.png" class="testimonial-item" alt="Avaliação 4">
+                        <img src="./img/avaliacoes/53.png" class="testimonial-item" alt="Avaliação 5">
+                        <img src="./img/avaliacoes/49.png" class="testimonial-item" alt="Avaliação 1 duplicate">
+                        <img src="./img/avaliacoes/52.png" class="testimonial-item" alt="Avaliação 4">
+
+                    </div>
+                </div>
+            </div>
+            <div class="testimonials-indicadores">
+                <span class="dot active"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+            </div>
+        </section>
+
+        <!-- EQUIPE / SOBRE MAIOR -->
+        <section class="team container">
+            <div class="team-media">
+                <div class="team-photo">
+                    <img src="./img/sobre/sobre1.png" alt="Equipe">
+                </div>
+                <div class="team-copy">
+                    <h3>Sobre o Littera</h3>
+                    <p>O Littera é um sebo clássico fundado com o objetivo de reviver o prazer da leitura através de livros usados. Com um estoque cuidadosamente organizado, oferecemos uma experiência única para colecionadores e leitores ávidos.</p>
+                </div>
+            </div>
+        
+
+            <div class="team-media2">
+                <div class="team-photo">
+                    <img src="./img/sobre/sobre3.png" alt="Equipe">
+                </div>
+                <div class="team-copy">
+                    <h3>Origem</h3>
+                    <p>O Littera é um sebo clássico fundado com o objetivo de reviver o prazer da leitura através de livros usados. Com um estoque cuidadosamente organizado, oferecemos uma experiência única para colecionadores e leitores ávidos.</p>
+                </div>
+            </div>
+       
+
+
+            <div class="team-media">
+                <div class="team-photo">
+                    <img src="./img/sobre/sobre2.png" alt="Equipe">
+                </div>
+                <div class="team-copy">
+                    <h3>Como Trabalhamos</h3>
+                    <p>O Littera é um sebo clássico fundado com o objetivo de reviver o prazer da leitura através de livros usados. Com um estoque cuidadosamente organizado, oferecemos uma experiência única para colecionadores e leitores ávidos.</p>
+                </div>
+            </div>
+        </section>
+
+        </section>   
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section about">
+                <h2>Littera</h2>
+                <p>O sebo online que dá uma nova vida aos livros usados. Aqui, cada página tem uma nova história.</p>
+            </div>
+
+            <div class="footer-section links">
+                <h2>Links Rápidos</h2>
+                <ul>
+                    <li><a href="./index.html">Início</a></li>
+                    <li><a href="#">Parcerias</a></li>
+                    <li><a href="./sobre.html">Sobre Nós</a></li>
+                    <li><a href="./contato.html">Contato</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section social">
+                <h2>Redes Sociais</h2>
+                <div class="social-icons">
+                    <a href="#"><img src="./img/icones/instagram.png" alt="Instagram"></a>
+                    <a href="https://x.com/LitteraSebo"><img src="./img/icones/twitter.png" alt="Twitter"></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            © 2025 Littera Sebo Online – Todos os direitos reservados.
+        </div>
+    </footer>
+
+    <!-- POPUP LOGIN / CADASTRO -->
+    <div id="popupOverlay" class="popup-overlay" aria-hidden="true">
+        <div class="popup-box" role="dialog" aria-modal="true" aria-labelledby="popupTitle">
+            <span class="closePopup" id="closePopup">✕</span>
+
+            <!-- LOGIN (padrão) -->
+            <div id="login-screen" class="auth-screen">
+                <h2 id="popupTitle">Entrar</h2>
+
+                <input type="email" id="login-email" placeholder="Email" autocomplete="username">
+                <input type="password" id="login-senha" placeholder="Senha" autocomplete="current-password">
+
+                <button id="btnLogin" class="btn-primary">Entrar</button>
+
+                <p class="auth-switch">Não tem conta? <a href="#" id="switchToRegister">Cadastre-se</a></p>
+            </div>
+
+            <!-- CADASTRO -->
+            <div id="cadastro-screen" class="auth-screen hidden">
+                <h2>Cadastrar</h2>
+
+                <input type="text" id="cad-nome" placeholder="Nome completo" autocomplete="name">
+                <input type="email" id="cad-email" placeholder="Email" autocomplete="email">
+                <input type="tel" id="cad-telefone" placeholder="Telefone" autocomplete="tel">
+                <input type="password" id="cad-senha" placeholder="Senha" autocomplete="new-password">
+
+                <button id="btnCadastrar" class="btn-primary">Criar conta</button>
+
+                <p class="auth-switch">Já tem conta? <a href="#" id="switchToLogin">Entrar</a></p>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- CARRINHO MODAL -->
+    <div id="cart-modal" class="cart-modal">
+        <div class="cart-modal-overlay">
+            <div class="cart-modal-content">
+                <div class="cart-modal-header">
+                    <h2>Carrinho de compras</h2>
+                    <span class="close-cart" id="close-cart">&times;</span>
+                </div>
+                <div class="cart-modal-body">
+                    <div id="cart-items"></div>
+                </div>
+                <div class="cart-modal-footer">
+                    <div class="cart-select-all">
+                        <input type="checkbox" id="cart-select-all">
+                        <label for="cart-select-all">Selecionar tudo</label>
+                    </div>
+                    <div class="cart-subtotal">
+                        <span>Subtotal: <strong id="cart-total">R$ 0,00</strong></span>
+                    </div>
+                    <button class="btn-checkout">Finalizar Pedido</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SCRIPTS -->
+    <script src="./js/script.js"></script>
+    <script src="./js/auth.js"></script>
+    <script src="./js/sobre.js"></script>
+</body>
+
+</html>
