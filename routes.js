@@ -16,7 +16,7 @@ router.use(express.static(path.join(__dirname, 'public-desktop')));
 router.use('/mobile', express.static(path.join(__dirname, 'public-mobile')));
 
 // SPA mobile
-router.get('/mobile/:rest(.*)', (req, res) => {
+router.get('/mobile/(.*)?', (req, res) => {
   res.sendFile(path.join(__dirname, 'public-mobile', 'index.html'));
 });
 
