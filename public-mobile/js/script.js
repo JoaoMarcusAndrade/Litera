@@ -92,7 +92,7 @@ document.addEventListener("DOMContentLoaded", () => {
           body:JSON.stringify(livro)
         });
 
-        const data = response.json();
+        const data = await response.json();
 
         if (response.ok){
           alert("Livro " + data.livro.titulo + "cadastrado com sucesso!");
