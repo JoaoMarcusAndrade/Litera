@@ -39,6 +39,7 @@ router.post('/api/cadastro', async (req, res) => {
 
     res.json({ ok: true, usuario });
   } catch (e) {
+    console.error(e);
     res.status(500).json({ error: 'Erro ao cadastrar' });
   }
 });
