@@ -28,6 +28,11 @@ router.post('/api/cadastro', async (req, res) => {
   try {
     const { nome_user, email, telefone, senha } = req.body;
 
+    // Checagem rápida para ver se os dados estão chegando
+    if (!nome_user || !email || !telefone || !senha) {
+      return res.status(400).json({ error: 'Faltam campos obrigatórios' });
+    }
+
     const hash = await bcrypt.hash(senha, 10);
 
     const usuario = await Usuario.create({
@@ -39,7 +44,7 @@ router.post('/api/cadastro', async (req, res) => {
 
     res.json({ ok: true, usuario });
   } catch (e) {
-    console.error(e);
+    console.error("erro no cadastro: ",e);
     res.status(500).json({ error: 'Erro ao cadastrar' });
   }
 });
