@@ -68,7 +68,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // ====== CADASTRO DE LIVRO ======
   if (form) {
-    form.addEventListener("submit", (e) => {
+    form.addEventListener("submit", async (e) => {
       e.preventDefault();
 
       const livro = {
@@ -84,17 +84,28 @@ document.addEventListener("DOMContentLoaded", () => {
       };
 
       console.log("📚 Livro cadastrado:", livro);
-      // ====== SALVAR NO LOCALSTORAGE ======
-      let livros = JSON.parse(localStorage.getItem("livros")) || [];
-      livros.push(livro);
-      localStorage.setItem("livros", JSON.stringify(livros));
+      // ====== SALVAR NO BANCO ======
+      try{
+        const response = await fetch("/api/livro", {
+          method: "POST",
+          headers: { "Content-Type": "application/json"},
+          body:JSON.stringify(livro)
+        });
 
-      alert("Livro cadastrado com sucesso!");
+        const data = response.json();
 
-      form.reset();
-      preview.src = "./IMG/placeholder.png";
-      modal.classList.remove("active");
-      document.body.style.overflow = "";
+        if (response.ok){
+          alert("Livro " + data.livro.titulo + "cadastrado com sucesso!");
+          fecharModalCadastro()
+          form.reset();
+          preview.src = "./IMG/placeholder.png";
+          modal.classList.remove("active");
+          document.body.style.overflow = "";
+        }
+      } catch (err) {
+        alert("Erro de conexão com o servidor");
+        console.error(err)
+      }
     });
   }
 

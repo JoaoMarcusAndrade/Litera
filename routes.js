@@ -2,7 +2,7 @@ import express from 'express';
 import path from 'path';
 import bcrypt from "bcryptjs";
 import { fileURLToPath } from 'url';
-import { Usuario } from "./models.js";
+import { Usuario, Livro } from "./models.js";
 
 const router = express.Router();
 
@@ -30,8 +30,14 @@ spaRoutes.forEach(route => {
     res.sendFile(path.join(__dirname, 'public-desktop', 'index.html'));
   });
 });
+//  ROTAS DA API MOBILE
+router.post('/api/livro', async (req,res) => {
+  try {
+    const livros = req.body;
+  }
+})
 
-//  ROTAS DA API
+//  ROTAS DA API DESKTOP
 router.post('/api/cadastro', async (req, res) => {
   try {
     const { nome_user, email, telefone, senha } = req.body;
