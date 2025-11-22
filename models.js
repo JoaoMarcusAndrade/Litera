@@ -172,3 +172,7 @@ export {
   PagamentoCartao,
   PagamentoBoleto,
 };
+
+sequelize.sync().then(() => {
+  console.log("Tabelas criadas!");
+});
