@@ -115,7 +115,7 @@ if (btnCadastrar) {
       const response = await fetch("/api/cadastro", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ nome, email, telefone, senha })
+        body: JSON.stringify({ nome_user, email, telefone, senha })
       });
 
       const data = await response.json();

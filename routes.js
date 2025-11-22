@@ -26,12 +26,12 @@ spaRoutes.forEach(route => {
 //  ROTAS DA API
 router.post('/api/cadastro', async (req, res) => {
   try {
-    const { nome, email, telefone, senha } = req.body;
+    const { nome_user, email, telefone, senha } = req.body;
 
     const hash = await bcrypt.hash(senha, 10);
 
     const usuario = await Usuario.create({
-      nome_user: nome,
+      nome_user,
       email,
       telefone,
       senha: hash
