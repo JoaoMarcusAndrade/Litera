@@ -22,7 +22,7 @@ const Livro = sequelize.define("LIVRO", {
   descricao: { type: DataTypes.STRING(255) },
   metodo_aquisicao: { type: DataTypes.STRING(30) },
   reservado: { type: DataTypes.BOOLEAN, defaultValue: false },
-  foto_url: { type: DataTypes.STRING(255) }
+  foto_url: { type: DataTypes.TEXT, allowNull: true}
 });
 
 // ============ TABELA USUARIO ============
