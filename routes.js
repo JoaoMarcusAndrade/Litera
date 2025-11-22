@@ -42,14 +42,20 @@ router.post('/api/livro', async (req, res) => {
     const livro = await Livro.create({
       titulo: dados.titulo,
       autor: dados.autor,
-      genero: dados.genero,
-      estado_conservacao: dados.condicaoGeral,
-      foto_url: dados.imagem,
+      nacionalidade : dados.nacionalidade,
+      editora: dados.editora,
+      paginas: dados.paginas,
+      preco: dados.preco,
       ISBN: dados.isbn,
+      genero: dados.genero,
+      estado_conservacao: dados.estado_conservacao,
+      descricao: dados.descricao,
+      metodo_aquisicao: dados.metodo_aquisicao,
+      foto_url: dados.imagem
     });
 
     return res.status(201).json({ message: "Livro cadastrado!", livro });
-    
+
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: "Erro ao processar dados" });

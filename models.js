@@ -12,15 +12,17 @@ const Livro = sequelize.define("LIVRO", {
   id_livro: { type: DataTypes.INTEGER, autoIncrement: true, primaryKey: true },
   titulo: { type: DataTypes.STRING(255), allowNull: false },
   autor: { type: DataTypes.STRING(100) },
+  nacionalidade: { type: DataTypes.STRING(20) },
+  editora: { type: DataTypes.STRING(30) },
+  paginas: { type: DataTypes.SMALLINT},
+  preco: { type: DataTypes.DECIMAL(10, 2) },
+  ISBN: { type: DataTypes.CHAR(13) },
   genero: { type: DataTypes.STRING(40) },
   estado_conservacao: { type: DataTypes.STRING(255) },
-  edicao: { type: DataTypes.STRING(30) },
-  nacionalidade: { type: DataTypes.STRING(20) },
-  preco: { type: DataTypes.DECIMAL(10, 2) },
+  descricao: { type: DataTypes.STRING(255) },
   metodo_aquisicao: { type: DataTypes.STRING(30) },
   reservado: { type: DataTypes.BOOLEAN, defaultValue: false },
-  foto_url: { type: DataTypes.STRING(255) },
-  ISBN: { type: DataTypes.CHAR(13) },
+  foto_url: { type: DataTypes.STRING(255) }
 });
 
 // ============ TABELA USUARIO ============

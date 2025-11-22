@@ -74,13 +74,16 @@ document.addEventListener("DOMContentLoaded", () => {
       const livro = {
         titulo: document.getElementById("titulo").value,
         autor: document.getElementById("autor").value,
+        nacionalidade: document.getElementById("nacionalidade").value,
         editora: document.getElementById("editora").value,
+        paginas: document.getElementById("paginas").value,
+        preco: document.getElementById("preco").value,
         isbn: document.getElementById("isbn").value,
+        genero: document.getElementById("genero").value,
+        estado_conservacao: document.getElementById("estado_conservacao").value,
         descricao: document.getElementById("descricao").value,
-        condicaoGeral: document.getElementById("condicao-geral").value,
-        condicaoCapa: document.getElementById("condicao-capa").value,
-        condicaoPaginas: document.getElementById("condicao-paginas").value,
-        imagem: preview.src,
+        metodo_aquisicao: document.getElementById("metodo_aquisicao").value,
+        imagem: preview.src
       };
 
       console.log("📚 Livro cadastrado:", livro);
